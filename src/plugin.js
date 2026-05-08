@@ -25,6 +25,9 @@ export function createCakkPlugin(hostApi) {
           metaEntries: [{ content_type: 'text/plain' }],
         };
       },
+      async getPushPreview({ draft }) {
+        return String(draft || '').trim();
+      },
     },
     register(registry) {
       const canHandle = ({ text }) => typeof text === 'string' && text.startsWith(CAKK_TEXT_MAGIC);
